@@ -16,6 +16,6 @@
 
 (defun @main()
   "run the parser on src.p"
-  (@parse-swtools :swtools-source "~/quicklisp/local-projects/swtoolsp/src.p"
-                  :result-filename "~/quicklisp/local-projects/swtoolsp/src.lisp")
+  (@parse-swtools :swtools-source "~/quicklisp/local-projects/esrap-test/src.p"
+                  :result-filename "~/quicklisp/local-projects/esrap-test/src.lisp")
   (values))
