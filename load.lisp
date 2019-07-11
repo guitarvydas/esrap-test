@@ -1,0 +1,8 @@
+(ql:quickload :esrap)
+(load "package")
+(load "futil")
+(load "swtools-parser")
+(load "traceall")
+(load "transcoder")
+(traceall)
+(@main)
