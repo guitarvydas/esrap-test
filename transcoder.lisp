@@ -16,6 +16,11 @@
 
 (defun @main()
   "run the parser on src.p"
-  (@parse-swtools :swtools-source "~/quicklisp/local-projects/esrap-test/src.p"
-                  :result-filename "~/quicklisp/local-projects/esrap-test/src.lisp")
-  (values))
+  (let* ((root (asdf:system-source-directory :esrap-test))
+         (swtools-source (merge-pathnames "src.p" root))
+         (result (merge-pathnames "src.lisp" root)))
+    (@parse-swtools :swtools-source swtools-source
+                    :result-filename result)
+    (values)))
+
+
