@@ -15,6 +15,7 @@ The test file is src.p.  It appears to contain a valid Pascal compound statement
 
 2. Use PROVE to run the failing test:
 
+    (ql:quickload :esrap-test)
     (ql:quickload :prove)
-    (prove:run (asdf:system-relative-pathname :esrap-test "t/run.lisp"))
+    (prove:run (asdf:system-relative-pathname :esrap-test "t/fail.lisp"))
 
