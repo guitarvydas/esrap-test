@@ -123,10 +123,8 @@
  (ESRAP:DEFRULE STATEMENT
      (OR (AND LABEL COLON UNLABELLEDSTATEMENT) UNLABELLEDSTATEMENT))
  (ESRAP:DEFRULE UNLABELLEDSTATEMENT
-     (OR SIMPLESTATEMENT STRUCTUREDSTATEMENT))
+     (OR STRUCTUREDSTATEMENT SIMPLESTATEMENT))
  (ESRAP:DEFRULE SIMPLESTATEMENT
-     (ESRAP:? SIMPLESTMT))
- (ESRAP:DEFRULE SIMPLESTMT
      (OR ASSIGNMENTSTATEMENT PROCEDURESTATEMENT GOTOSTATEMENT))
  (ESRAP:DEFRULE ASSIGNMENTSTATEMENT
      (AND VARIABLE ASSIGN EXPRESSION))
@@ -365,9 +363,6 @@
      (AND "{" (+ NOTBRACE) "}"))
  (ESRAP:DEFRULE NOTBRACE
      (AND (ESRAP:! "}") CHARACTER))
- (ESRAP:DEFRULE IDENT
-     (AND (ESRAP:CHARACTER-RANGES (#\A #\Z) (#\a #\z))
-          (* (ESRAP:CHARACTER-RANGES (#\A #\Z) #\- (#\a #\z) (#\0 #\9) #\_))))
  (ESRAP:DEFRULE STRING_LITERAL
      (AND (ESRAP:CHARACTER-RANGES #\') (* (ESRAP:CHARACTER-RANGES (#\! #\')))
           (ESRAP:CHARACTER-RANGES #\')))
@@ -386,6 +381,16 @@
      (AND IDENT "/"))
  (ESRAP:DEFRULE FILENAME
      IDENT)
+ (ESRAP:DEFRULE KEYWORD
+     (OR "and" "array" "begin" "boolean" "case" "char" "chr" "const" "div" "do"
+         "downto" "else" "end" "file" "for" "function" "goto" "if" "in"
+         "integer" "label" "mod" "nil" "not" "of" "or" "packed" "procedure"
+         "program" "real" "record" "repeat" "set" "then" "to" "type" "until"
+         "var" "while" "with" "unit" "interface" "uses" "string"
+         "implementation" "true" "false"))
+ (ESRAP:DEFRULE IDENT
+     (AND (ESRAP:! KEYWORD) (ESRAP:CHARACTER-RANGES (#\A #\Z) (#\a #\z))
+          (* (ESRAP:CHARACTER-RANGES (#\A #\Z) #\- (#\a #\z) (#\0 #\9) #\_))))
  (ESRAP:DEFRULE FILEEXT
      (AND "." IDENT))
  (ESRAP:DEFRULE SPACING
