@@ -390,7 +390,8 @@
          "implementation" "true" "false"))
  (ESRAP:DEFRULE IDENT
      (AND (ESRAP:! KEYWORD) (ESRAP:CHARACTER-RANGES (#\A #\Z) (#\a #\z))
-          (* (ESRAP:CHARACTER-RANGES (#\A #\Z) #\- (#\a #\z) (#\0 #\9) #\_))))
+          (* (ESRAP:CHARACTER-RANGES (#\A #\Z) #\- (#\a #\z) (#\0 #\9) #\_))
+	  Spacing))
  (ESRAP:DEFRULE FILEEXT
      (AND "." IDENT))
  (ESRAP:DEFRULE SPACING

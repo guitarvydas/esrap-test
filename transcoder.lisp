@@ -9,7 +9,6 @@
   (unless (and swtools-source result-filename)
     (error "no sw tools Pascal filename specified"))
   (let ((file-as-string (file-to-string swtools-source)))
-    (format *standard-output* "first char is /~A/~%" (char file-as-string 0))
     (let ((transcoded (esrap:parse 'compoundStatement file-as-string)))
       (with-open-file (outf result-filename :direction :output :if-exists :supersede)
         (write transcoded :stream outf)))))
@@ -21,6 +20,6 @@
          (result (merge-pathnames "src.lisp" root)))
     (@parse-swtools :swtools-source swtools-source
                     :result-filename result)
-    (values)))
+    T))
 
 
