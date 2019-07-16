@@ -2,7 +2,7 @@
   (unless (and swtools-source result-filename)
     (error "no sw tools Pascal filename specified"))
   (let ((file-as-string (file-to-string swtools-source)))
-    (let ((transcoded (esrap:parse 'compoundStatement file-as-string)))
+    (let ((transcoded (esrap:parse 'expression file-as-string)))
       (with-open-file (outf result-filename :direction :output :if-exists :supersede)
         (write transcoded :stream outf)))))
 
@@ -15,4 +15,18 @@
                     :result-filename result)
     T))
 
-
+(defun @run ()
+  (ql:quickload :swtools-parser)
+  (@create-swtools-parser 
+   :peg-input-filename 
+   (asdf:system-relative-pathname
+    :swtools-parser
+    "swtools-parser.peg")
+   :output-lisp-filename 
+   (asdf:system-relative-pathname
+    :swtools-parser
+    "swtools-parser.lisp"))
+  (ql:quickload :esrap-test)
+  (traceall)
+  (@main))
+  
