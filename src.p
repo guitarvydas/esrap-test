@@ -1,5 +1,5 @@
 begin
-	if (a > b) then begin
+	if (a and b) then begin
 		a := b
 	end
 end
