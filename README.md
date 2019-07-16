@@ -35,6 +35,7 @@ Current usage:
 	  	"swtools-parser.lisp"))
 (ql:quickload :esrap-test)
 (ql:quickload :prove)
+(traceall)
 (prove:run (asdf:system-relative-pathname :esrap-test "t/run.lisp"))
 
 ####
