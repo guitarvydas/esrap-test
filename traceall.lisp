@@ -57,7 +57,6 @@
 		      statement
 		      unlabelledStatement
 		      simpleStatement
-		      simpleStmt
 		      assignmentStatement
 		      variable
 		      expression
